@@ -141,18 +141,87 @@
   /* Nome digitando igual máquina de escrever */
   .digitando{border-right:3px solid #fff;white-space:nowrap;overflow:hidden}
 </style>
+<style>
+  .countdown-wrap{
+    text-align:center;
+    padding: 6px 0 18px;
+    font-family: inherit;
+    color: #000;
+  }
+  .countdown-label{
+    font-family: inherit;
+    color: #000;
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin: 0 0 10px;
+    text-transform: uppercase;
+    opacity: .85;
+  }
+  .countdown{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+  }
+  .cd-item{
+    min-width: 68px;
+    padding: 10px 6px 8px;
+    background: rgba(255,255,255,.75);
+    border: 1px solid rgba(0,0,0,.12);
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.06);
+    backdrop-filter: blur(4px);
+  }
+  .cd-item span{
+    display:block;
+    font-family: inherit;
+    color:#000;
+    font-size: 30px;
+    line-height: 1;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  .cd-item small{
+    display:block;
+    font-family: inherit;
+    color:#000;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+</style>
 </head>
 <body>
-
 <div class="wrapper">
 <div id="coracoes" style="position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:1"></div>
-
   <div class="capa">
     <!-- <span class="tag">NOSSO CASAMENTO</span>-->
     <h1>Thiago<br>& Cristiane</h1>
     <p>&nbsp;<br>28/11/2026 • 9:00<br>Cartório da Cidadania de Indaiatuba</p>
   </div>
-
+ <!-- REGRESSIVA -->
+<div class="countdown-wrap">
+  <p class="countdown-label">Contagem regressiva para o grande dia</p>
+  <div class="countdown">
+    <div class="cd-item">
+      <span id="cd-dias">00</span>
+      <small>dias</small>
+    </div>
+    <div class="cd-item">
+      <span id="cd-horas">00</span>
+      <small>horas</small>
+    </div>
+    <div class="cd-item">
+      <span id="cd-min">00</span>
+      <small>min</small>
+    </div>
+    <div class="cd-item">
+      <span id="cd-seg">00</span>
+      <small>seg</small>
+    </div>
+  </div>
+</div>
+<!-- FIM REGRESSIVA -->
   <div style="padding:4px 0 20px">
     <div class="card">
       <h2>Nosso Casamento no civil</h2>
@@ -193,7 +262,7 @@
     <p style="font-size:15px;line-height:1.65;color:#3a2e2a">Ficamos muito felizes com a presença de vocês nesso momento tão lindo ❤️<br>
 	Que Deus abençoe muito vocês 😘</p>
   </div>
-  <!-- FIM DO RECADO -->
+	<!-- FIM DO RECADO -->
     <!-- INÍCIO DO RECADO -->
   <div style="background:#fcfaf7;border:1px solid #eee5d8;border-radius:16px;padding:18px;margin-bottom:12px">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
@@ -211,7 +280,26 @@
 	<br>
   </div>
 </div>
-
+<!-- REGRESSIVA SCRIPT -->
+<script>
+  const alvo = new Date('2026-11-28T09:00:00-03:00').getTime();
+  function atualizaContagem(){
+    const agora = new Date().getTime();
+    let diff = alvo - agora;
+    if(diff < 0) diff = 0;
+    const dias = Math.floor(diff / (1000*60*60*24));
+    const horas = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    const min = Math.floor((diff % (1000*60*60)) / (1000*60));
+    const seg = Math.floor((diff % (1000*60)) / 1000);
+    document.getElementById('cd-dias').textContent = String(dias).padStart(2,'0');
+    document.getElementById('cd-horas').textContent = String(horas).padStart(2,'0');
+    document.getElementById('cd-min').textContent = String(min).padStart(2,'0');
+    document.getElementById('cd-seg').textContent = String(seg).padStart(2,'0');
+  }
+  atualizaContagem();
+  setInterval(atualizaContagem, 1000);
+</script>
+<!-- FINAL REGRESSIVA SCRIPT -->
 <script>
   // REGISTRA O GSAP - É O QUE O LOVABLE USA
   gsap.registerPlugin(ScrollTrigger);
