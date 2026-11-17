@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>❤️ Thiago & Cristiane ❤️</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22></text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=National+Park:wght@200..800&display=swap" rel="stylesheet">
+<style>
+    * {
+    font-family: 'National Park', sans-serif !important;
+  }
+  body {
+    font-family: 'National Park', sans-serif;
+    font-weight: 400;
+  }
+  h1, h2, h3 {
+    font-family: 'National Park', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  p, span, a, button {
+    font-family: 'National Park', sans-serif;
+  }
+</style>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Georgia',serif}
+  /* FUNDO DESKTOP - TRAVA O SITE NO CENTRO */
+  body{background:#1a1512;color:#3a2e2a}
+  .wrapper{max-width:480px;margin:0 auto;background:#f5efe6;min-height:100vh;box-shadow:0 0 40px rgba(0,0,0,.6)}
+  /*.capa{min-height:92vh;background:linear-gradient(rgba(0,0,0,.30),rgba(0,0,0,.60)),url('capa.jpg') center/cover no-repeat;display:flex;flex-direction:column;justify-content:flex-end;padding:28px}*/
+.capa{
+  min-height:92vh;
+  position:relative;
+  background:linear-gradient(rgba(0,0,0,.20),rgba(0,0,0,.45)),url('capa.jpg') center/cover no-repeat;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:28px;
+  padding-bottom:60px;
+}
+
+/* FADE-OUT EMBAIXO - O GRADIENTE */
+.capa::after{
+  content:'';
+  position:absolute;
+  left:0; right:0; bottom:0;
+  height:220px;
+  /* Vai de transparente até a cor do fundo do site */
+  background:linear-gradient(to bottom, transparent 0%, rgba(245,239,230,.2) 30%, rgba(245,239,230,.7) 70%, #f5efe6 100%);
+  pointer-events:none;
+}
+
+/* Garante que o texto fique POR CIMA do fade */
+.capa h1, .capa p, .capa .btn, .capa .tag{
+  position:relative;
+  z-index:2;
+}
+  .capa h1{font-size:48px;color:#fff;line-height:1.05}
+  .capa p{color:#fff;font-size:18px;margin-top:10px}
+  .btn{display:block;margin:12px auto;padding:16px 20px;border-radius:50px;text-decoration:none;font-weight:bold;max-width:340px;font-size:16px;text-align:center}
+  .btn-musica{background:#fff;color:#3a2e2a;border:1px solid #c9a86a;cursor:pointer}
+  .btn-mapa{background:#3a2e2a;color:#fff}
+  .btn-pix{background:#c9a86a;color:#fff;border:none;cursor:pointer;width:100%}
+  .btn-whats{background:#25D366;color:#fff}
+  .card{background:#fff;margin:20px;padding:24px;border-radius:20px;box-shadow:0 5px 20px rgba(0,0,0,.08);text-align:left}
+  .card h2{font-size:22px;margin-bottom:10px}
+  .card p{font-size:15px;line-height:1.65}
+  .cota{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:13px 0;border-bottom:1px solid #eee}
+  .cota button{background:#3a2e2a;color:#fff;border:none;padding:9px 14px;border-radius:20px;cursor:pointer;white-space:nowrap}
+  .foto{width:100%;border-radius:20px;margin:12px 0}
+  .tag{display:inline-block;background:#fff;color:#3a2e2a;padding:6px 12px;border-radius:20px;font-size:12px;margin-bottom:10px;font-weight:bold}
+
+  /* MODAL COM FUNDO ESMAECIDO */
+  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:999;align-items:center;justify-content:center;padding:20px}
+  .modal-overlay.aberto{display:flex}
+  .modal{background:#fff;width:100%;max-width:380px;border-radius:24px;padding:28px 24px;text-align:center;position:relative;box-shadow:0 20px 50px rgba(0,0,0,.3);animation:subir .3s ease}
+  @keyframes subir{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+  .modal .fechar{position:absolute;top:12px;right:16px;background:none;border:none;font-size:22px;cursor:pointer;color:#999}
+  .modal h3{font-size:20px;margin-bottom:4px}
+  .modal .valor{font-size:28px;color:#c9a86a;font-weight:bold;margin:6px 0}
+  .modal .qr-box{background:#f9f5ef;border:1px dashed #c9a86a;border-radius:16px;padding:16px;margin:14px 0}
+  .modal .qr-box img{width:200px;height:200px;object-fit:contain}
+  .modal .chave{background:#f5efe6;padding:12px;border-radius:12px;font-size:16px;font-weight:bold;letter-spacing:1px;word-break:break-all}
+  .modal .btn-copiar{background:#3a2e2a;color:#fff;border:none;padding:14px;width:100%;border-radius:50px;font-weight:bold;cursor:pointer;margin-top:12px;font-size:15px}
+  .modal .obs{font-size:12px;color:#888;margin-top:12px;line-height:1.5}
+  #msgCopiado{display:none;color:green;font-weight:bold;margin-top:10px}
+
+  /* MURAL DE RECADOS */
+  .recados-intro{color:#6f5d50;margin-bottom:18px}
+  .form-recados label{display:block;font-size:14px;font-weight:bold;margin:14px 0 7px;color:#3a2e2a}
+  .form-recados input,.form-recados textarea{display:block;width:100%;border:1px solid #dfd4c7;border-radius:12px;padding:13px 14px;background:#fcfaf7;color:#3a2e2a;font:15px Georgia,serif;outline:none}
+  .form-recados input:focus,.form-recados textarea:focus{border-color:#c9a86a;box-shadow:0 0 0 3px rgba(201,168,106,.16)}
+  .form-recados textarea{min-height:120px;resize:vertical;line-height:1.5}
+  .form-recados .btn-enviar{background:#3a2e2a;color:#fff;border:0;width:100%;cursor:pointer}
+  .form-recados .privacidade{font-size:12px;color:#81766d;line-height:1.5;margin-top:12px}
+  .music-controls{position:fixed;right:14px;bottom:72px;z-index:1000;display:flex;flex-direction:column;gap:9px;align-items:flex-end}
+  .music-controls button{background:#5a6b4f;color:#fff;border:2px solid #fff;border-radius:50px;padding:11px 15px;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 4px 15px rgba(0,0,0,.3)}
+  .music-controls button[aria-pressed="true"]{background:#3d4a35}
+  @media(max-width:360px){.music-controls{right:8px;bottom:64px}.music-controls button{font-size:12px;padding:9px 12px}}
+</style>
+<!-- ANIMAÇÕES ESTILO LOVABLE -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+  /* Entrada da capa */
+  .capa h1{opacity:0;transform:translateY(30px)}
+  .capa p{opacity:0;transform:translateY(20px)}
+  .capa .btn{opacity:0;transform:translateY(20px)}
+
+  /* Cards aparecem ao rolar */
+  .reveal{opacity:0;transform:translateY(40px)}
+
+  /* Corações flutuando */
+ .coracao{
+  position:absolute;
+  font-size:24px;
+  opacity:0;
+  pointer-events:none;
+  animation:subir 2.8s linear infinite
+}
+@keyframes subir{
+  0%{transform:translateY(0) scale(0.6);opacity:0}
+  10%{opacity:1}
+  100%{transform:translateY(-600px) scale(1.3) rotate(25deg);opacity:0}
+}
+
+  /* Foto com zoom suave */
+  .foto{transition:transform .6s ease}
+  .foto:hover{transform:scale(1.03)}
+
+  /* Botão com pulso igual Lovable */
+  .btn-whats{animation:pulso 2.5s infinite}
+  @keyframes pulso{
+    0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,.4)}
+    50%{box-shadow:0 0 0 12px rgba(37,211,102,0)}
+  }
+
+  /* Nome digitando igual máquina de escrever */
+  .digitando{border-right:3px solid #fff;white-space:nowrap;overflow:hidden}
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+<div id="coracoes" style="position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:1"></div>
+
+  <div class="capa">
+    <!-- <span class="tag">NOSSO CASAMENTO</span>-->
+    <h1>Thiago<br>& Cristiane</h1>
+    <p>&nbsp;<br>28/11/2026 • 9:00<br>Cartório da Cidadania de Indaiatuba</p>
+  </div>
+
+  <div style="padding:4px 0 20px">
+    <div class="card">
+      <h2>Nosso Casamento no civil</h2>
+      <p>Nosso casamento será celebrado de uma maneira especial: no cartório, com todo o carinho de quem torce por nós. Depois, seguiremos para viver nossa lua de mel e começar um novo capítulo da nossa história.</p>
+      <p style="margin-top:12px"><b>Local:</b> Cartório da Cidadania de Indaiatuba<br>
+      <b>Endereço:</b> R. Sete de Setembro, 329 - Centro, Indaiatuba - SP<br>
+      <b>Data:</b> 28/11/2026 às 9:00</p>
+      <a class="btn btn-mapa" href="https://maps.google.com/?q=Cart%C3%B3rio+da+Cidadania+de+Indaiatuba+Rua+Sete+de+Setembro+329+Indaiatuba+SP" target="_blank" rel="noopener">📍 Como chegar no Cartório</a>
+      <img class="foto" src="casal.jpg" alt="Thiago e Cristiane">
+    </div>
+    <div class="card reveal" id="deixe-seu-recado">
+      <h2 style="text-align:center">Deixe seu carinho ♡</h2>
+      <p class="recados-intro" style="text-align:center">Uma mensagem sua será uma lembrança especial para guardarmos desta nova etapa.</p>
+      <form class="form-recados" name="recados-casamento" method="POST" data-netlify="true" netlify-honeypot="campo-armadilha" action="/mensagem-enviada.html">
+        <input type="hidden" name="form-name" value="recados-casamento">
+        <p hidden><label>Não preencha este campo: <input name="campo-armadilha"></label></p>
+        <label for="nome-recado">Seu nome</label>
+        <input id="nome-recado" type="text" name="nome" maxlength="80" autocomplete="name" placeholder="Como podemos identificar você?" required>
+        <label for="mensagem-recado">Sua mensagem</label>
+        <textarea id="mensagem-recado" name="mensagem" maxlength="1000" placeholder="Deixe um desejo, conselho ou algumas palavras para nós..." required></textarea>
+        <button class="btn btn-enviar" type="submit">Enviar meu carinho ♡</button>
+        <p class="privacidade">As mensagens serão recebidas em particular e só serão publicadas no site depois da nossa aprovação. Obrigado por fazer parte da nossa história!</p>
+      </form>
+      </div>
+    </div>
+	<div class="card reveal">
+  <h2 style="text-align:center">Mural de Carinhos ♡</h2>
+  <p style="text-align:center;color:#6f5d50;margin-bottom:20px">Recados de quem já deixou seu carinho para nós.</p>
+  <!-- INÍCIO DO RECADO -->
+  <div style="background:#fcfaf7;border:1px solid #eee5d8;border-radius:16px;padding:18px;margin-bottom:12px">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+      <div style="width:42px;height:42px;border-radius:50%;background:#c9a86a;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:18px;flex-shrink:0">C</div>
+      <div>
+        <div style="font-weight:bold;font-size:16px">Cristiane & Thiago</div>
+        <div style="font-size:12px;color:#888">Agora mesmo • ❤️</div>
+      </div>
+    </div>
+    <p style="font-size:15px;line-height:1.65;color:#3a2e2a">Ficamos muito felizes com a presença de vocês nesso momento tão lindo ❤️<br>
+	Que Deus abençoe muito vocês 😘</p>
+  </div>
+  <!-- FIM DO RECADO -->
+    <!-- INÍCIO DO RECADO -->
+  <div style="background:#fcfaf7;border:1px solid #eee5d8;border-radius:16px;padding:18px;margin-bottom:12px">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+      <div style="width:42px;height:42px;border-radius:50%;background:#c9a86a;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:18px;flex-shrink:0">F</div>
+      <div>
+        <div style="font-weight:bold;font-size:16px">Fabiano e Rosana</div>
+        <div style="font-size:12px;color:#888">16/11/2026 - 22:30 • ❤️</div>
+      </div>
+    </div>
+    <p style="font-size:15px;line-height:1.65;color:#3a2e2a">Que previlégio fazer parte deste dia tão especial. Desejo um feliz casamento aos noivos. Que a felicidade ilumine o caminho, e a vida de vocês. Que este dia seja apenas o início de uma nova vida , repleta de muito amor, união e harmonia,Felicidades q vocês.</p>
+  </div>
+  <!-- FIM DO RECADO -->
+<br>
+</div>
+	<br>
+  </div>
+</div>
+
+<script>
+  // REGISTRA O GSAP - É O QUE O LOVABLE USA
+  gsap.registerPlugin(ScrollTrigger);
+
+  // 1. ANIMAÇÃO DA CAPA - igual Lovable
+  gsap.to(".capa h1", {opacity:1, y:0, duration:1.2, ease:"power3.out", delay:0.2});
+  gsap.to(".capa p", {opacity:1, y:0, duration:1, ease:"power3.out", delay:0.5});
+  gsap.to(".capa .btn", {opacity:1, y:0, duration:1, stagger:0.15, ease:"power3.out", delay:0.7});
+
+  // 2. CARDS APARECENDO AO ROLAR
+  document.querySelectorAll('.card').forEach(card=>{
+    card.classList.add('reveal');
+    gsap.to(card, {
+      opacity:1, y:0, duration:0.9, ease:"power3.out",
+      scrollTrigger:{trigger:card, start:"top 85%"}
+    });
+  });
+// 3. PARALLAX NA FOTO DA CAPA
+  gsap.to(".capa", {
+    backgroundPosition:"center 30%",
+    scrollTrigger:{trigger:".capa", start:"top top", end:"bottom top", scrub:true}
+  });
+
+// 4. CORAÇÕES FLUTUANDO - IGUAL SITE DE CASAMENTO DO LOVABLE
+function criarCoracao(){
+  const container = document.getElementById('coracoes');
+  const c = document.createElement('div');
+  c.className = 'coracao';
+  c.innerHTML = ['❤️','💍'][Math.floor(Math.random()*2)];
+  c.style.left = Math.random()*100 + '%';
+  c.style.top = '100vh';
+  c.style.animationDuration = (5 + Math.random()*2) + 's';
+  container.appendChild(c);
+  setTimeout(()=>c.remove(), 7000);
+}
+// AGORA BEM LEVE - 1 coração a cada 1.2 segundos
+setInterval(()=>{
+  criarCoracao();
+}, 600);
+
+</script>
+<div class="music-controls" aria-label="Controles de música">
+  <button id="btnNossaMusica" type="button" aria-pressed="false" onclick="alternarMusica('nossa')">▶ Música</button>
+  <!--<button id="btnMusicaFundo" type="button" aria-pressed="false" onclick="alternarMusica('fundo')">▶ A Thousand Years</button>-->
+</div>
+<audio id="audioNossaMusica" src="audio.mp3" loop preload="none"></audio>
+<!-- <audio id="audioMusicaFundo" src="musica.mp3" loop preload="none"></audio>-->
+<audio id="audioNossaMusica" src="audio.mp3" loop preload="auto"></audio>
+<script>
+  const faixas = {
+    nossa: { audio: document.getElementById('audioNossaMusica'), botao: document.getElementById('btnNossaMusica'), texto: 'Música' },
+  };
+
+  // Isso vai te falar se o arquivo não existe
+  faixas.nossa.audio.addEventListener('error', () => {
+    console.log('ERRO: audio.mp3 não encontrado ou formato inválido');
+    alert('O arquivo audio.mp3 não foi encontrado no servidor. Verifique o nome do arquivo.');
+  });
+
+  async function alternarMusica(tipo) {
+    const faixa = faixas[tipo];
+    const estavaTocando = !faixa.audio.paused;
+    if (estavaTocando) {
+      faixa.audio.pause();
+      faixa.botao.setAttribute('aria-pressed', 'false');
+      faixa.botao.textContent = '▶ ' + faixa.texto;
+      return;
+    }
+    try {
+      await faixa.audio.play();
+      faixa.botao.setAttribute('aria-pressed', 'true');
+      faixa.botao.textContent = '⏸ Pausar · ' + faixa.texto;
+    } catch (erro) {
+      console.log('Erro ao tocar:', erro);
+      alert('Não foi possível tocar. Verifique se o arquivo audio.mp3 existe.');
+    }
+  }
+</script>
+</body>
+</html>
